@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atividade</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1>Graphics</h1>
+    <div style="display: flex;">
+        <div style="width: 60%;">
+            <canvas id="graficoTemp"></canvas>
+        </div>
+        <div style="width: 60%;">
+            <canvas id="graficoUmid"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var temperatura = [30, 29, 28, 25, 22, 23];
+    var umidade = [80, 82, 80, 85, 80, 83];
+
+    var graficoTemp = new Chart(document.getElementById('graficoTemp').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                data: temperatura,
+                label: 'Temperatura',
+                borderColor: '#63B1BC',
+                backgroundColor: '#63B1BC'
+            }, {
+                data: umidade,
+                label: 'Umidade',
+                borderColor: '#ED145B',
+                backgroundColor: '#ED145B'
+            }]
+
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        }
+    });
+    var barraTemp = [22, 24, 27, 23, 20, 18]
+    var barraUmid = [90, 98, 93, 87, 88, 82]
+
+    var graficoUmid = new Chart(document.getElementById('graficoUmid').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                data: barraTemp,
+                label: 'temperatura',
+                borderColor: '#0762C8',
+                backgroundColor: '#0762C8'
+            }, {
+                data: barraUmid,
+                label: 'umidade',
+                borderColor: '#63B1BC',
+                backgroundColor: '#63B1BC'
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
